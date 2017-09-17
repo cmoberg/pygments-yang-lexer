@@ -47,7 +47,7 @@ class YangLexer(RegexLexer):
 			(r'(submodule\s+)' + _id, bygroups(Keyword.Namespace, String)),
 		],
 		'module_header_stmts': [
-			(r'(yang-version\s+)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
+			(r'(yang-version)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(namespace)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(prefix)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(belongs-to\s+)' + _id, bygroups(Token.Keyword, String)),
