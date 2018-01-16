@@ -58,7 +58,6 @@ class YangLexer(RegexLexer):
 			(r'(revision-date\s+)' + _date, bygroups(Token.Keyword, String)),
 		],
 		'meta_stmts': [
-			# (r'(organization)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(organization)' + _str, bygroups(Token.Keyword, String.Doc, Token.Punctuation)),
 			(r'(contact)' + _str, bygroups(Token.Keyword, String.Doc, Token.Punctuation)),
 			(r'(description)' + _str, bygroups(Token.Keyword, String.Doc, Token.Punctuation)),
