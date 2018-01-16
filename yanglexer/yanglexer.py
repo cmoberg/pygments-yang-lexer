@@ -31,7 +31,7 @@ class YangLexer(RegexLexer):
 	# Loose interpretations of ABNF in RFC 6020
 	# Single or double multi-line, or unquoted single-line string terminated
 	# by semicolon
-	_str = r'(\s+(?s)["\'].+?["\']|\s+[A-Za-z0-9\_\-\.\:\/\[\]]+)(;)'
+	_str = r'(\s+(?s)["\'].*?["\']|\s+[A-Za-z0-9\_\-\.\:\/\[\]]*)(;)'
 	_date = r'(["\']?[0-9]{4}\-[0-9]{2}\-[0-9]{2}["\']?)'
 	# Roughly equivalent to identifier-arg-str
 	_id = r'(["\']?[A-Za-z_][A-Za-z0-9\_\-\.\:]+["\']?)'
@@ -58,6 +58,7 @@ class YangLexer(RegexLexer):
 			(r'(revision-date\s+)' + _date, bygroups(Token.Keyword, String)),
 		],
 		'meta_stmts': [
+			# (r'(organization)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(organization)' + _str, bygroups(Token.Keyword, String.Doc, Token.Punctuation)),
 			(r'(contact)' + _str, bygroups(Token.Keyword, String.Doc, Token.Punctuation)),
 			(r'(description)' + _str, bygroups(Token.Keyword, String.Doc, Token.Punctuation)),
