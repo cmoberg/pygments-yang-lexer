@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name='pygments-yang-lexer',
-    version='0.1',
+    version='0.2',
     description=('A Pygments lexer for YANG modules'),
     long_description=read('README.md'),
     packages=['yanglexer'],

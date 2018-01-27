@@ -3,8 +3,8 @@
     pygments.lexers.yang
     ~~~~~~~~~~~~~~~~~~~~
 
-    Lexer for YANG (IETF RFC 6020) modules
-    https://tools.ietf.org/html/rfc6020
+    Lexer for YANG 1.1 (IETF RFC 7950) modules
+    https://tools.ietf.org/html/rfc7950
 """
 
 from pygments.lexer import include, bygroups, RegexLexer
