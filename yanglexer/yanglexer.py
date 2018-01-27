@@ -20,7 +20,7 @@ __all__ = ['YangLexer']
 #  - Support string concatenation with '+'
 #  - Look closer at ABNF in RFC6020 for more fine-grained types
 #    above and beyond the current (_str, _id, and _nodeid)
-#  - We don't support YANG extensions (i.e. <prefix>:<keyword> form)
+#  - Add support YANG extensions (i.e. <prefix>:<keyword> form)
 
 class YangLexer(RegexLexer):
 	name = 'YANG'
@@ -74,6 +74,7 @@ class YangLexer(RegexLexer):
 			(r'(uses\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(refine\s+)' + _nodeid, bygroups(Token.Keyword, String)),
 			(r'(anyxml\s+)' + _id, bygroups(Token.Keyword, String)),
+			(r'(anydata\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(config)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(presence)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(when)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
@@ -89,6 +90,7 @@ class YangLexer(RegexLexer):
 			(r'(rpc\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(input)', Token.Keyword),
 			(r'(output)', Token.Keyword),
+			(r'(action\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(notification\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(deviation\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(augment\s+)' + _instanceid, bygroups(Token.Keyword, String)),
@@ -98,6 +100,7 @@ class YangLexer(RegexLexer):
 		'type_stmts': [
 			(r'(type\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(units)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
+			(r'(modifier)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(default)' + _str, bygroups(Token.Keyword, String, Token.Punctuation)),
 			(r'(status\s+)' + _id, bygroups(Token.Keyword, String)),
 			(r'(reference\s+)' + _id, bygroups(Token.Keyword, String)),
